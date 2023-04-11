@@ -1,5 +1,5 @@
 //your code here
-let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
+let touristSpots = ['The Virupaksha Temple','Victoria Memorial','Tajmahal'];
 function removeArticle (str) {
    let words=str.split(' ');
 	if(words.length>1 &&(words[0].toLowerCase()==='a'||
