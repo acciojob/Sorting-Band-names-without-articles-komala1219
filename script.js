@@ -1,15 +1,27 @@
 //your code here
 let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
-function strip (word) {
-    let regex = new RegExp('^(a |the |an )', 'i')
-    return word.replace(regex, '').trim()
+function removeArticle (str) {
+   let words=str.split(' ');
+	if(words.length>1 &&(words[0].toLowerCase()==='a'||
+						 words[0].toLowerCase()==='an'||words[0].toLowerCase()==='The')){
+		words.splice(0,1);
+	}
+	return words.join(" ");
+    
 }
 
-const sortedBands = touristSpots .sort((a, b) => (strip(a) > strip(b)) ? 1 : -1)
+touristSpots.sort((a,b)=>{
+	const bandA=removeArticle(a);
+	const bandB=removeArticle(b);
 
+	return bandA.localeCompare(bandB);
+	
+})
 
-/** 
- * add ul list in HTML
- **/
-document.querySelector('#bands').innerHTML = 
-    sortedBands.map(item => `<li>${item}</li>`).join('')
+let ul=document.getElementById("band");
+
+touristSpots.forEach(band=>{
+	let li=document.createElement('li');
+	li.innerText=band;
+	ul.appendChild(li);
+});
